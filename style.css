@@ -1,0 +1,582 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f8fc;
+  color: #182033;
+  min-height: 100vh;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+  height: 76px;
+  background: #ffffff;
+  border-bottom: 1px solid #e8ebf2;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 7%;
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background: #496cff;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  box-shadow: 0 8px 20px rgba(73,108,255,0.20);
+}
+
+
+.brand h2 {
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+
+.brand span {
+  font-size: 11px;
+  color: #8a93a6;
+}
+
+
+/* MAIN */
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+
+
+/* HERO */
+
+.hero {
+  text-align: center;
+  padding: 70px 0 45px;
+}
+
+
+.badge {
+  display: inline-block;
+
+  padding: 8px 14px;
+
+  background: #eaf0ff;
+  color: #496cff;
+
+  border-radius: 30px;
+
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+.hero h1 {
+  margin-top: 20px;
+
+  font-size: clamp(40px, 6vw, 70px);
+
+  line-height: 1.05;
+}
+
+
+.hero h1 span {
+  color: #496cff;
+}
+
+
+.hero p {
+  max-width: 620px;
+
+  margin: 22px auto 0;
+
+  color: #70798d;
+
+  line-height: 1.7;
+
+  font-size: 16px;
+}
+
+
+/* GENERATOR */
+
+.generator {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 25px;
+
+  align-items: stretch;
+}
+
+
+/* CARDS */
+
+.form-card,
+.preview-card {
+  background: white;
+
+  border: 1px solid #e8ebf2;
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  box-shadow: 0 15px 45px rgba(20,30,60,0.06);
+}
+
+
+.form-card h2,
+.preview-card h2 {
+  font-size: 24px;
+}
+
+
+.subtitle {
+  color: #8992a5;
+
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+
+/* FORM */
+
+label {
+  display: block;
+
+  margin: 20px 0 8px;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  color: #384157;
+}
+
+
+input,
+textarea {
+  width: 100%;
+
+  border: 1px solid #dfe4ee;
+
+  border-radius: 13px;
+
+  padding: 14px 15px;
+
+  font-size: 14px;
+
+  outline: none;
+
+  background: #fbfcfe;
+
+  color: #182033;
+
+  transition: 0.2s;
+}
+
+
+input:focus,
+textarea:focus {
+  border-color: #496cff;
+
+  background: white;
+
+  box-shadow: 0 0 0 4px rgba(73,108,255,0.08);
+}
+
+
+textarea {
+  height: 110px;
+
+  resize: none;
+}
+
+
+/* BUTTONS */
+
+.generate-btn {
+  width: 100%;
+
+  border: none;
+
+  background: #496cff;
+
+  color: white;
+
+  padding: 15px;
+
+  margin-top: 25px;
+
+  border-radius: 13px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+
+.generate-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(73,108,255,0.25);
+}
+
+
+.reset-btn {
+  width: 100%;
+
+  border: none;
+
+  background: #f1f4f9;
+
+  color: #4d566a;
+
+  padding: 14px;
+
+  margin-top: 10px;
+
+  border-radius: 13px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* PREVIEW */
+
+.preview-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+}
+
+
+#status {
+  color: #5bb98c;
+}
+
+
+#qrArea {
+  min-height: 330px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-direction: column;
+}
+
+
+.empty-state {
+  text-align: center;
+
+  color: #9aa2b2;
+}
+
+
+.qr-placeholder {
+  width: 160px;
+  height: 160px;
+
+  border: 2px dashed #dce2ed;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #b0b7c5;
+
+  font-size: 30px;
+
+  margin: auto auto 15px;
+}
+
+
+/* GENERATED QR */
+
+.qr-box {
+  background: white;
+
+  padding: 18px;
+
+  border-radius: 18px;
+
+  border: 1px solid #e5e8ef;
+
+  box-shadow: 0 10px 30px rgba(20,30,60,0.08);
+}
+
+
+.qr-brand {
+  text-align: center;
+
+  font-weight: bold;
+
+  color: #182033;
+
+  margin-bottom: 12px;
+
+  letter-spacing: 1px;
+}
+
+
+/* QR INFO */
+
+.qr-info {
+  margin-top: 20px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #edf0f5;
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.info-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 9px 0;
+
+  font-size: 13px;
+}
+
+
+.info-row span {
+  color: #8992a5;
+}
+
+
+.info-row strong {
+  text-align: right;
+
+  word-break: break-word;
+}
+
+
+.copy-btn,
+.download-btn {
+  width: 100%;
+
+  border: none;
+
+  padding: 13px;
+
+  border-radius: 12px;
+
+  margin-top: 10px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+
+.copy-btn {
+  background: #eef2ff;
+
+  color: #496cff;
+}
+
+
+.download-btn {
+  background: #182033;
+
+  color: white;
+}
+
+
+/* HOW IT WORKS */
+
+.how-section {
+  padding: 80px 0;
+}
+
+
+.how-section > h2 {
+  text-align: center;
+
+  font-size: 30px;
+
+  margin-bottom: 30px;
+}
+
+
+.steps {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+.step {
+  background: white;
+
+  border: 1px solid #e8ebf2;
+
+  border-radius: 20px;
+
+  padding: 25px;
+}
+
+
+.step > div {
+  color: #496cff;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  margin-bottom: 15px;
+}
+
+
+.step h3 {
+  margin-bottom: 8px;
+}
+
+
+.step p {
+  color: #7e8799;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+
+  background: white;
+
+  border-top: 1px solid #e8ebf2;
+
+  padding: 35px;
+
+  color: #7e8799;
+}
+
+
+footer strong {
+  color: #182033;
+}
+
+
+footer p {
+  margin-top: 7px;
+
+  font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .generator {
+    grid-template-columns: 1fr;
+  }
+
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+
+  .hero {
+    padding-top: 45px;
+  }
+
+
+  .form-card,
+  .preview-card {
+    padding: 22px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .navbar {
+    padding: 0 5%;
+  }
+
+
+  .brand h2 {
+    font-size: 14px;
+  }
+
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+
+  .hero p {
+    font-size: 14px;
+  }
+
+}
