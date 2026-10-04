@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RETURN PLEASE — QR Generator</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- QR Generator Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="brand">
+      <div class="brand-icon">↩</div>
+      <div>
+        <h2>RETURN PLEASE</h2>
+        <span>Smart Lost & Found</span>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="container">
+
+    <section class="hero">
+      <span class="badge">SMART QR STICKER</span>
+
+      <h1>Create Your<br><span>Return Please</span> QR</h1>
+
+      <p>
+        Create a unique QR code for your belongings.
+        Anyone who finds your item can scan it to help return it.
+      </p>
+    </section>
+
+
+    <section class="generator">
+
+      <!-- LEFT -->
+      <div class="form-card">
+
+        <h2>Create QR Sticker</h2>
+
+        <p class="subtitle">
+          Enter your item details below.
+        </p>
+
+
+        <label>Item Name</label>
+
+        <input
+          type="text"
+          id="itemName"
+          placeholder="e.g. Black Backpack"
+          maxlength="50"
+        >
+
+
+        <label>Finder Message</label>
+
+        <textarea
+          id="finderMessage"
+          placeholder="e.g. If you found this item, please scan this QR to contact me."
+          maxlength="150"
+        ></textarea>
+
+
+        <button class="generate-btn" onclick="generateQR()">
+          Generate QR
+        </button>
+
+
+        <button class="reset-btn" onclick="resetGenerator()">
+          Create New QR
+        </button>
+
+      </div>
+
+
+      <!-- RIGHT -->
+      <div class="preview-card">
+
+        <div class="preview-header">
+          <span>YOUR QR</span>
+          <span id="status">Ready</span>
+        </div>
+
+
+        <div id="qrArea">
+
+          <div class="empty-state">
+            <div class="qr-placeholder">
+              QR
+            </div>
+
+            <p>Your QR will appear here</p>
+          </div>
+
+        </div>
+
+
+        <div id="qrInfo" class="qr-info hidden">
+
+          <div class="info-row">
+            <span>QR ID</span>
+
+            <strong id="qrId">
+              —
+            </strong>
+          </div>
+
+
+          <div class="info-row">
+            <span>Item</span>
+
+            <strong id="displayItem">
+              —
+            </strong>
+          </div>
+
+
+          <button class="copy-btn" onclick="copyQRId()">
+            Copy QR ID
+          </button>
+
+
+          <button class="download-btn" onclick="downloadQR()">
+            Download QR
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="how-section">
+
+      <h2>How It Works</h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <div>01</div>
+          <h3>Create</h3>
+          <p>Create a unique QR for your item.</p>
+        </div>
+
+
+        <div class="step">
+          <div>02</div>
+          <h3>Stick</h3>
+          <p>Print the QR and attach it to your item.</p>
+        </div>
+
+
+        <div class="step">
+          <div>03</div>
+          <h3>Return</h3>
+          <p>A finder scans the QR to help return it.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <strong>RETURN PLEASE</strong>
+    <p>Helping lost things find their way home.</p>
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
