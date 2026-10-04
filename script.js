@@ -1,293 +1,357 @@
-let currentQRId = null;
-let currentQRUrl = null;
+/* =========================================
+   RETURN PLEASE
+   RESERVATION WEBSITE
+   ========================================= */
 
 
-/* Generate unique RETURN PLEASE ID */
+/*
+  IMPORTANT:
 
-function generateUniqueID() {
+  Yahan apna WhatsApp number daalo.
 
-  const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  India ke liye:
+  91 + 10 digit number
 
-  let randomPart = "";
+  Example:
+  const WHATSAPP_NUMBER = "919876543210";
+*/
 
-  for (let i = 0; i < 6; i++) {
-
-    const randomIndex =
-      Math.floor(Math.random() * characters.length);
-
-    randomPart += characters[randomIndex];
-  }
-
-  return "RP-" + randomPart;
-}
+const WHATSAPP_NUMBER = "919762463324";
 
 
-/* Generate QR */
+/* ================= MOBILE MENU ================= */
 
-function generateQR() {
+const menuBtn =
+  document.getElementById("menuBtn");
 
-  const itemName =
-    document.getElementById("itemName").value.trim();
-
-  const finderMessage =
-    document.getElementById("finderMessage").value.trim();
+const nav =
+  document.getElementById("nav");
 
 
-  if (!itemName) {
+if (menuBtn) {
 
-    alert("Please enter your item name.");
+  menuBtn.addEventListener("click", () => {
 
-    return;
-  }
-
-
-  /* Generate new ID */
-
-  currentQRId = generateUniqueID();
-
-
-  /*
-    IMPORTANT:
-
-    Change this domain when your real
-    RETURN PLEASE website is live.
-  */
-
-  currentQRUrl =
-    "https://returnplease.in/f/" + currentQRId;
-
-
-  /* Clear previous QR */
-
-  const qrArea =
-    document.getElementById("qrArea");
-
-  qrArea.innerHTML = "";
-
-
-  /* QR wrapper */
-
-  const qrBox =
-    document.createElement("div");
-
-  qrBox.className = "qr-box";
-
-  qrBox.id = "generatedQR";
-
-
-  /* Brand */
-
-  const brand =
-    document.createElement("div");
-
-  brand.className = "qr-brand";
-
-  brand.innerText = "RETURN PLEASE";
-
-
-  /* QR */
-
-  const qr =
-    document.createElement("div");
-
-  qr.id = "qrcode";
-
-
-  qrBox.appendChild(brand);
-
-  qrBox.appendChild(qr);
-
-  qrArea.appendChild(qrBox);
-
-
-  /* Create QR */
-
-  new QRCode(qr, {
-
-    text: currentQRUrl,
-
-    width: 220,
-
-    height: 220,
-
-    colorDark: "#182033",
-
-    colorLight: "#ffffff",
-
-    correctLevel: QRCode.CorrectLevel.H
+    nav.classList.toggle("active");
 
   });
 
-
-  /* Update information */
-
-  document.getElementById("qrId").innerText =
-    currentQRId;
-
-  document.getElementById("displayItem").innerText =
-    itemName;
+}
 
 
-  document.getElementById("status").innerText =
-    "Generated";
+/* Close mobile menu after clicking link */
+
+document.querySelectorAll(".nav a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    nav.classList.remove("active");
+
+  });
+
+});
 
 
-  document.getElementById("qrInfo")
-    .classList.remove("hidden");
+/* ================= RESERVATION FORM ================= */
+
+const reservationForm =
+  document.getElementById("reservationForm");
+
+const successMessage =
+  document.getElementById("successMessage");
+
+const whatsappButton =
+  document.getElementById("whatsappButton");
 
 
-  /*
-    Save locally for testing.
-  */
+reservationForm.addEventListener(
+  "submit",
+  function(event) {
 
-  const qrData = {
-
-    id: currentQRId,
-
-    itemName: itemName,
-
-    finderMessage: finderMessage,
-
-    url: currentQRUrl,
-
-    createdAt: new Date().toISOString()
-
-  };
+    event.preventDefault();
 
 
-  localStorage.setItem(
-    "returnPlease_" + currentQRId,
-    JSON.stringify(qrData)
+    /* Get form values */
+
+    const name =
+      document.getElementById("name")
+        .value
+        .trim();
+
+
+    const phone =
+      document.getElementById("phone")
+        .value
+        .trim();
+
+
+    const city =
+      document.getElementById("city")
+        .value
+        .trim();
+
+
+    const quantity =
+      document.getElementById("quantity")
+        .value;
+
+
+    const item =
+      document.getElementById("item")
+        .value;
+
+
+    const message =
+      document.getElementById("message")
+        .value
+        .trim();
+
+
+    /* ================= VALIDATION ================= */
+
+
+    if (name.length < 2) {
+
+      alert("Please enter your name.");
+
+      return;
+
+    }
+
+
+    /* Indian mobile number validation */
+
+    const phonePattern =
+      /^[6-9][0-9]{9}$/;
+
+
+    if (!phonePattern.test(phone)) {
+
+      alert(
+        "Please enter a valid 10-digit mobile number."
+      );
+
+      return;
+
+    }
+
+
+    if (city.length < 2) {
+
+      alert("Please enter your city.");
+
+      return;
+
+    }
+
+
+    /* ================= PRICE ================= */
+
+    const pricePerQR = 49;
+
+    const totalPrice =
+      Number(quantity) * pricePerQR;
+
+
+    /* ================= RESERVATION ID ================= */
+
+    const reservationId =
+      createReservationID();
+
+
+    /* ================= DATE ================= */
+
+    const currentDate =
+      new Date();
+
+
+    const date =
+      currentDate.toLocaleDateString(
+        "en-IN"
+      );
+
+
+    const time =
+      currentDate.toLocaleTimeString(
+        "en-IN",
+        {
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      );
+
+
+    /* ================= WHATSAPP MESSAGE ================= */
+
+    const whatsappMessage =
+
+`🔵 RETURN PLEASE — NEW RESERVATION
+
+Reservation ID: ${reservationId}
+
+👤 Customer Details
+Name: ${name}
+Mobile: ${phone}
+City: ${city}
+
+📦 Order Details
+Quantity: ${quantity}
+Item: ${item}
+Price: ₹${totalPrice}
+
+📝 Message:
+${message || "No additional message"}
+
+📅 Date: ${date}
+⏰ Time: ${time}
+
+Please confirm my RETURN PLEASE reservation.`;
+
+
+    /* Encode message */
+
+    const encodedMessage =
+      encodeURIComponent(
+        whatsappMessage
+      );
+
+
+    /* WhatsApp URL */
+
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+
+    /* ================= SAVE LOCALLY ================= */
+
+    const reservation = {
+
+      reservationId: reservationId,
+
+      name: name,
+
+      phone: phone,
+
+      city: city,
+
+      quantity: quantity,
+
+      item: item,
+
+      totalPrice: totalPrice,
+
+      message: message,
+
+      date: date,
+
+      time: time
+
+    };
+
+
+    localStorage.setItem(
+
+      "returnPleaseReservation_" +
+      reservationId,
+
+      JSON.stringify(reservation)
+
+    );
+
+
+    localStorage.setItem(
+
+      "returnPleaseLatestReservation",
+
+      JSON.stringify(reservation)
+
+    );
+
+
+    /* ================= SHOW SUCCESS ================= */
+
+    reservationForm.classList.add(
+      "hidden"
+    );
+
+
+    successMessage.classList.remove(
+      "hidden"
+    );
+
+
+    whatsappButton.href =
+      whatsappURL;
+
+
+    /* Scroll */
+
+    successMessage.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+);
+
+
+/* ================= CREATE RESERVATION ID ================= */
+
+function createReservationID() {
+
+  const characters =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+
+  let random =
+    "";
+
+
+  for (let i = 0; i < 6; i++) {
+
+    const index =
+      Math.floor(
+        Math.random() *
+        characters.length
+      );
+
+
+    random +=
+      characters[index];
+
+  }
+
+
+  return "RP-RES-" + random;
+
+}
+
+
+/* ================= NEW RESERVATION ================= */
+
+function newReservation() {
+
+  reservationForm.reset();
+
+
+  successMessage.classList.add(
+    "hidden"
   );
 
 
-  localStorage.setItem(
-    "returnPleaseLatest",
-    JSON.stringify(qrData)
+  reservationForm.classList.remove(
+    "hidden"
   );
 
 
-  /* Scroll to QR */
-
-  document.getElementById("qrArea")
+  document
+    .getElementById("reserve")
     .scrollIntoView({
 
       behavior: "smooth",
 
-      block: "center"
+      block: "start"
 
     });
-
-}
-
-
-/* Copy QR ID */
-
-function copyQRId() {
-
-  if (!currentQRId) {
-
-    alert("Generate a QR first.");
-
-    return;
-  }
-
-
-  navigator.clipboard
-    .writeText(currentQRId)
-    .then(() => {
-
-      alert(
-        "QR ID copied: " + currentQRId
-      );
-
-    })
-    .catch(() => {
-
-      alert("Could not copy QR ID.");
-
-    });
-
-}
-
-
-/* Download QR */
-
-function downloadQR() {
-
-  if (!currentQRId) {
-
-    alert("Generate a QR first.");
-
-    return;
-  }
-
-
-  const canvas =
-    document.querySelector("#qrcode canvas");
-
-
-  if (!canvas) {
-
-    alert("QR is not ready yet.");
-
-    return;
-  }
-
-
-  const link =
-    document.createElement("a");
-
-
-  link.download =
-    "RETURN-PLEASE-" +
-    currentQRId +
-    ".png";
-
-
-  link.href =
-    canvas.toDataURL("image/png");
-
-
-  link.click();
-
-}
-
-
-/* Reset */
-
-function resetGenerator() {
-
-  currentQRId = null;
-
-  currentQRUrl = null;
-
-
-  document.getElementById("itemName").value = "";
-
-  document.getElementById("finderMessage").value = "";
-
-
-  document.getElementById("qrArea").innerHTML = `
-
-    <div class="empty-state">
-
-      <div class="qr-placeholder">
-        QR
-      </div>
-
-      <p>Your QR will appear here</p>
-
-    </div>
-
-  `;
-
-
-  document.getElementById("qrInfo")
-    .classList.add("hidden");
-
-
-  document.getElementById("status")
-    .innerText = "Ready";
 
 }
