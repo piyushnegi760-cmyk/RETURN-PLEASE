@@ -4,134 +4,341 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>RETURN PLEASE — QR Generator</title>
+  <meta
+    name="description"
+    content="RETURN PLEASE - Smart QR stickers that help lost belongings find their way home."
+  >
+
+  <title>RETURN PLEASE — Smart Lost & Found</title>
 
   <link rel="stylesheet" href="style.css">
-
-  <!-- QR Generator Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body>
 
-  <header class="navbar">
-    <div class="brand">
-      <div class="brand-icon">↩</div>
-      <div>
-        <h2>RETURN PLEASE</h2>
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+
+    <a href="#home" class="logo">
+      <div class="logo-mark">↩</div>
+
+      <div class="logo-text">
+        <strong>RETURN PLEASE</strong>
         <span>Smart Lost & Found</span>
       </div>
-    </div>
+    </a>
+
+
+    <nav class="nav" id="nav">
+
+      <a href="#home">Home</a>
+      <a href="#how">How It Works</a>
+      <a href="#product">Product</a>
+      <a href="#faq">FAQ</a>
+      <a href="#reserve">Reserve</a>
+
+    </nav>
+
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      ☰
+    </button>
+
   </header>
 
 
-  <main class="container">
 
-    <section class="hero">
-      <span class="badge">SMART QR STICKER</span>
+  <!-- ================= HERO ================= -->
 
-      <h1>Create Your<br><span>Return Please</span> QR</h1>
+  <main>
 
-      <p>
-        Create a unique QR code for your belongings.
-        Anyone who finds your item can scan it to help return it.
-      </p>
-    </section>
+    <section class="hero" id="home">
 
+      <div class="hero-content">
 
-    <section class="generator">
+        <div class="badge">
+          SMART QR LOST & FOUND
+        </div>
 
-      <!-- LEFT -->
-      <div class="form-card">
+        <h1>
+          Lost something?
+          <span>Let it find its way home.</span>
+        </h1>
 
-        <h2>Create QR Sticker</h2>
-
-        <p class="subtitle">
-          Enter your item details below.
+        <p>
+          RETURN PLEASE smart QR stickers help people contact
+          the owner when they find a lost belonging.
         </p>
 
 
-        <label>Item Name</label>
+        <div class="hero-buttons">
 
-        <input
-          type="text"
-          id="itemName"
-          placeholder="e.g. Black Backpack"
-          maxlength="50"
-        >
+          <a href="#reserve" class="btn primary-btn">
+            Reserve Your QR
+          </a>
 
+          <a href="#how" class="btn secondary-btn">
+            How It Works
+          </a>
 
-        <label>Finder Message</label>
-
-        <textarea
-          id="finderMessage"
-          placeholder="e.g. If you found this item, please scan this QR to contact me."
-          maxlength="150"
-        ></textarea>
+        </div>
 
 
-        <button class="generate-btn" onclick="generateQR()">
-          Generate QR
-        </button>
+        <div class="trust-row">
 
+          <div>
+            <strong>₹49</strong>
+            <span>Starting Price</span>
+          </div>
 
-        <button class="reset-btn" onclick="resetGenerator()">
-          Create New QR
-        </button>
+          <div>
+            <strong>1 QR</strong>
+            <span>Per Item</span>
+          </div>
+
+          <div>
+            <strong>Simple</strong>
+            <span>Scan & Return</span>
+          </div>
+
+        </div>
 
       </div>
 
 
-      <!-- RIGHT -->
-      <div class="preview-card">
+      <!-- HERO QR VISUAL -->
 
-        <div class="preview-header">
-          <span>YOUR QR</span>
-          <span id="status">Ready</span>
+      <div class="hero-visual">
+
+        <div class="floating-card card-one">
+          <span>✓</span>
+          Easy to use
         </div>
 
+        <div class="qr-card">
 
-        <div id="qrArea">
+          <div class="qr-top">
+            RETURN PLEASE
+          </div>
 
-          <div class="empty-state">
-            <div class="qr-placeholder">
-              QR
+
+          <div class="fake-qr">
+
+            <div class="qr-pattern">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
 
-            <p>Your QR will appear here</p>
+          </div>
+
+
+          <h3>SCAN IF FOUND</h3>
+
+          <p>
+            Help this item return to its owner.
+          </p>
+
+
+          <div class="sample-id">
+            RP-A7K92X
           </div>
 
         </div>
 
 
-        <div id="qrInfo" class="qr-info hidden">
+        <div class="floating-card card-two">
+          <span>⌁</span>
+          Privacy focused
+        </div>
 
-          <div class="info-row">
-            <span>QR ID</span>
+      </div>
 
-            <strong id="qrId">
-              —
-            </strong>
+    </section>
+
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="section" id="how">
+
+      <div class="section-heading">
+
+        <div class="badge">
+          HOW IT WORKS
+        </div>
+
+        <h2>
+          Three simple steps.
+        </h2>
+
+        <p>
+          Protect your everyday belongings without complicated technology.
+        </p>
+
+      </div>
+
+
+      <div class="steps">
+
+        <article class="step-card">
+
+          <div class="step-number">
+            01
           </div>
 
-
-          <div class="info-row">
-            <span>Item</span>
-
-            <strong id="displayItem">
-              —
-            </strong>
+          <div class="step-icon">
+            ＋
           </div>
 
+          <h3>Reserve</h3>
 
-          <button class="copy-btn" onclick="copyQRId()">
-            Copy QR ID
-          </button>
+          <p>
+            Reserve your RETURN PLEASE QR sticker through our website.
+          </p>
+
+        </article>
 
 
-          <button class="download-btn" onclick="downloadQR()">
-            Download QR
-          </button>
+        <article class="step-card">
+
+          <div class="step-number">
+            02
+          </div>
+
+          <div class="step-icon">
+            ◇
+          </div>
+
+          <h3>Stick It</h3>
+
+          <p>
+            Put the sticker on your bag, laptop, luggage, keys or other belongings.
+          </p>
+
+        </article>
+
+
+        <article class="step-card">
+
+          <div class="step-number">
+            03
+          </div>
+
+          <div class="step-icon">
+            ↗
+          </div>
+
+          <h3>Get It Back</h3>
+
+          <p>
+            If someone finds your item, they can scan the QR and follow the contact process.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= PRODUCT ================= -->
+
+    <section class="section product-section" id="product">
+
+      <div class="product-content">
+
+        <div class="badge">
+          RETURN PLEASE QR
+        </div>
+
+        <h2>
+          One small sticker.
+          <span>Big peace of mind.</span>
+        </h2>
+
+        <p>
+          Put a RETURN PLEASE QR sticker on the things you carry every day.
+          The goal is simple — make it easier for a finder to help return
+          a lost item.
+        </p>
+
+
+        <ul class="feature-list">
+
+          <li>
+            <span>✓</span>
+            Unique QR identification
+          </li>
+
+          <li>
+            <span>✓</span>
+            Easy to scan
+          </li>
+
+          <li>
+            <span>✓</span>
+            Compact sticker design
+          </li>
+
+          <li>
+            <span>✓</span>
+            No owner phone number printed publicly
+          </li>
+
+        </ul>
+
+
+        <a href="#reserve" class="btn primary-btn">
+          Reserve Now
+        </a>
+
+      </div>
+
+
+      <div class="product-card">
+
+        <div class="sticker">
+
+          <div class="sticker-brand">
+            RETURN PLEASE
+          </div>
+
+          <div class="sticker-qr">
+
+            <div class="mini-qr">
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+
+          </div>
+
+          <strong>
+            SCAN IF FOUND
+          </strong>
+
+          <p>
+            Help this item return.
+          </p>
+
+          <small>
+            RP-A7K92X
+          </small>
 
         </div>
 
@@ -140,31 +347,334 @@
     </section>
 
 
-    <section class="how-section">
 
-      <h2>How It Works</h2>
+    <!-- ================= USE CASES ================= -->
 
-      <div class="steps">
+    <section class="section">
 
-        <div class="step">
-          <div>01</div>
-          <h3>Create</h3>
-          <p>Create a unique QR for your item.</p>
+      <div class="section-heading">
+
+        <div class="badge">
+          MADE FOR EVERYDAY LIFE
+        </div>
+
+        <h2>
+          Put it on almost anything.
+        </h2>
+
+      </div>
+
+
+      <div class="use-cases">
+
+        <div class="use-card">
+          <div class="use-icon">🎒</div>
+          <h3>Backpacks</h3>
+          <p>Protect your everyday college or work bag.</p>
         </div>
 
 
-        <div class="step">
-          <div>02</div>
-          <h3>Stick</h3>
-          <p>Print the QR and attach it to your item.</p>
+        <div class="use-card">
+          <div class="use-icon">💻</div>
+          <h3>Laptops</h3>
+          <p>Add an easy-to-find identity sticker.</p>
         </div>
 
 
-        <div class="step">
-          <div>03</div>
-          <h3>Return</h3>
-          <p>A finder scans the QR to help return it.</p>
+        <div class="use-card">
+          <div class="use-icon">🧳</div>
+          <h3>Luggage</h3>
+          <p>Useful while travelling or commuting.</p>
         </div>
+
+
+        <div class="use-card">
+          <div class="use-icon">🔑</div>
+          <h3>Keys</h3>
+          <p>Make lost keys easier to identify.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= RESERVATION ================= -->
+
+    <section class="reserve-section" id="reserve">
+
+      <div class="reserve-wrapper">
+
+        <div class="reserve-info">
+
+          <div class="badge">
+            RESERVE YOUR QR
+          </div>
+
+          <h2>
+            Get your
+            <span>RETURN PLEASE</span>
+            sticker.
+          </h2>
+
+          <p>
+            Fill in your details and reserve your QR sticker.
+            We will contact you to confirm the reservation.
+          </p>
+
+
+          <div class="price-box">
+
+            <div>
+              <span>Starting from</span>
+              <strong>₹49</strong>
+            </div>
+
+            <small>
+              Payment can be arranged separately during the initial launch.
+            </small>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- RESERVATION FORM -->
+
+        <div class="reservation-card">
+
+          <form id="reservationForm">
+
+            <div class="form-title">
+              <h3>Reserve Your QR</h3>
+              <p>It only takes a minute.</p>
+            </div>
+
+
+            <label for="name">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+              maxlength="60"
+            >
+
+
+            <label for="phone">
+              Mobile Number
+            </label>
+
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="10-digit mobile number"
+              inputmode="numeric"
+              maxlength="10"
+              required
+            >
+
+
+            <label for="city">
+              City
+            </label>
+
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="e.g. Dehradun"
+              required
+              maxlength="50"
+            >
+
+
+            <label for="quantity">
+              Quantity
+            </label>
+
+            <select id="quantity" name="quantity">
+
+              <option value="1">1 QR Sticker — ₹49</option>
+              <option value="2">2 QR Stickers — ₹98</option>
+              <option value="3">3 QR Stickers — ₹147</option>
+              <option value="4">4 QR Stickers — ₹196</option>
+              <option value="5">5 QR Stickers — ₹245</option>
+
+            </select>
+
+
+            <label for="item">
+              What will you use it for?
+            </label>
+
+            <select id="item" name="item">
+
+              <option value="Backpack">Backpack</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Luggage">Luggage</option>
+              <option value="Keys">Keys</option>
+              <option value="Other">Other</option>
+
+            </select>
+
+
+            <label for="message">
+              Additional Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Anything you want us to know?"
+              maxlength="250"
+            ></textarea>
+
+
+            <button
+              type="submit"
+              class="submit-btn"
+            >
+              Reserve Now →
+            </button>
+
+
+            <p class="form-note">
+              By reserving, you agree to be contacted regarding your reservation.
+            </p>
+
+          </form>
+
+
+          <!-- SUCCESS MESSAGE -->
+
+          <div
+            id="successMessage"
+            class="success-message hidden"
+          >
+
+            <div class="success-icon">
+              ✓
+            </div>
+
+            <h3>
+              Reservation Ready!
+            </h3>
+
+            <p>
+              Your reservation details are ready to send on WhatsApp.
+            </p>
+
+            <a
+              id="whatsappButton"
+              href="#"
+              target="_blank"
+              class="whatsapp-btn"
+            >
+              Send Reservation on WhatsApp
+            </a>
+
+            <button
+              onclick="newReservation()"
+              class="new-btn"
+            >
+              Make Another Reservation
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= FAQ ================= -->
+
+    <section class="section faq-section" id="faq">
+
+      <div class="section-heading">
+
+        <div class="badge">
+          FAQ
+        </div>
+
+        <h2>
+          Frequently asked questions.
+        </h2>
+
+      </div>
+
+
+      <div class="faq-list">
+
+        <details>
+
+          <summary>
+            What is a RETURN PLEASE QR sticker?
+            <span>+</span>
+          </summary>
+
+          <p>
+            It is a small QR sticker designed to help a finder
+            identify the item and follow the available contact process.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Where can I put the sticker?
+            <span>+</span>
+          </summary>
+
+          <p>
+            You can place it on suitable belongings such as backpacks,
+            laptops, luggage, key holders and other personal items.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Do I need an app?
+            <span>+</span>
+          </summary>
+
+          <p>
+            The basic concept is designed around scanning a QR code
+            using a phone camera. No dedicated app is required for the basic scan.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Is my phone number printed on the sticker?
+            <span>+</span>
+          </summary>
+
+          <p>
+            No. The sticker is designed around a QR/ID system rather
+            than publicly printing your personal phone number.
+          </p>
+
+        </details>
 
       </div>
 
@@ -173,10 +683,27 @@
   </main>
 
 
+
+  <!-- ================= FOOTER ================= -->
+
   <footer>
-    <strong>RETURN PLEASE</strong>
-    <p>Helping lost things find their way home.</p>
+
+    <div class="footer-brand">
+      <div class="logo-mark">↩</div>
+
+      <div>
+        <strong>RETURN PLEASE</strong>
+        <p>Helping lost things find their way home.</p>
+      </div>
+    </div>
+
+
+    <div class="footer-bottom">
+      © 2026 RETURN PLEASE. All rights reserved.
+    </div>
+
   </footer>
+
 
 
   <script src="script.js"></script>
